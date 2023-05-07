@@ -1,0 +1,4 @@
+Aca tendremos el texto a copiar hasta el otro archivo
+
+lO que ahora vemos acá, por supuesto, en destino, es porque desde el origen ha 
+llegado :D 

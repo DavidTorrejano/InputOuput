@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-public class EjercicioTres_Cuatro {
+public class Ejercicio_Tres_Cuatro {
 
     public static void main(String[] args) {
 
