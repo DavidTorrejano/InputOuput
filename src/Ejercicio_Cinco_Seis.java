@@ -27,21 +27,21 @@ public class Ejercicio_Cinco_Seis {
 
 //----------------------------------------------------------------------------------------------------------------
 
-        ArrayList <Integer> listaNumeros= new ArrayList<Integer>();
+        ArrayList <Integer> listaNumeros= new ArrayList<>();
 
 
 
-        for(int i=0; i<=30; i++){
+        for(int i=0; i<=10; i++){ // si el límitie introducido es impar, devolverá hasta el último anterior a ese
             listaNumeros.add(i+1);
 
-            int lar= listaNumeros.size();
+            int posList= listaNumeros.size()-1;
 
-            if(listaNumeros.get(lar-1)%2== 0){
-                listaNumeros.remove(lar-1);
+            if(listaNumeros.get(posList)%2== 0){
+                listaNumeros.remove(posList);
                 continue;
             }
 
-            if(lar>1) System.out.print(listaNumeros.get(lar-2) + " ");
+            if(posList>0) System.out.print(listaNumeros.get(posList-1) + " ");
 
         }
 
