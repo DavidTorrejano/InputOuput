@@ -1,116 +1,146 @@
+
 public class EjercicioNueve {
 
-    //92: \ -----  34: "
 
     public static void main(String[] args) {
 
-        Usuario usuario= new Usuario();
 
-        usuario.setUsuario("RobertoDniro");
-        usuario.setPassword("Creo que ha funcionado");
+        String pass= codificadorContrasena("Un texto de prueba");
+        System.out.println(pass);
+
+        String reverPass= decodificadorContrasena(pass);
+        System.out.println(reverPass);
 
 
-
-        System.out.println(usuario.getUsuario());
-        System.out.println(usuario.getPassword());
 
 
     }
-}
 
+    public static String codificadorContrasena(String passMet) {
 
-class Usuario{
-
-    private String usuario;
-    private String pass;
-
-//-----------------------------------------------------------------------------------------------------------------------
-
-    Password password= new Password(pass);
-
-
-    //CONSTRUCTOR
-
-    public Usuario(String usuario){
-        this.usuario= usuario;
-    }
-
-    public Usuario(){}
-
-//-----------------------------------------------------------------------------------------------------------------------
-
-    //MÉTODOS
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    //
-
-    public void setPassword(String pass){
-        password.codificadorContrasena(pass);
-        this.pass= password.toString();
-    }
-
-    public Password getPassword() {
-        return password;
-    }
-
-
-}
-
-
-
-
-
-class Password {
-
-    private String passAtr= "";
-
-    public Password(String passAtr){
-        this.passAtr= passAtr;
-    }
-
-
-    public void codificadorContrasena(String passMet) {
-
-        String temp= "";
+        StringBuilder temp= new StringBuilder();
 
         for(int i = 0; i< passMet.length(); i++){
 
             int aEntero= passMet.charAt(i);
 
-            if(aEntero%2== 0 && aEntero>=80) {
-                aEntero += 10;
+            if(aEntero>10 && aEntero<20){
+                aEntero+= 20;
+                temp.append((char)aEntero);
             }
-            else if(aEntero%2!=0 && aEntero>=80){
-                aEntero-=10;
+            else if(aEntero<30){
+                aEntero-= 10;
+                temp.append((char)aEntero);
             }
-            else if(aEntero>30 && aEntero<40){
-                aEntero+=10;
+            else if(aEntero<40){
+                aEntero+= 20;
+                temp.append((char)aEntero);
             }
             else if(aEntero<50){
-                aEntero-=10;
+                aEntero-= 20;
+                temp.append((char)aEntero);
             }
-            else if (aEntero<60) {
+            else if(aEntero<60){
+                aEntero-= 10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<70){
+                aEntero+= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<80){
+                aEntero-= 10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<90){
+                aEntero+= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<100){
+                aEntero-= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<110){
+                aEntero-= 10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero%2== 0 && aEntero>=110){
                 aEntero+=10;
+                temp.append((char)aEntero);
             }
-            else {
-                aEntero-=10;
+            else if(aEntero%2!= 0 && aEntero>=110){
+                aEntero+=12;
+                temp.append((char)aEntero);
             }
 
-            temp+= (char)aEntero;
+
         }
 
-        this.passAtr = temp;
+        return temp.toString();
     }
 
-    @Override
-    public String toString() {
-        return passAtr;
+    //     REVERTIMOS CODIFICACIÓN
+
+    public static String decodificadorContrasena(String passMet) {
+
+        StringBuilder temp= new StringBuilder();
+
+        for(int i = 0; i< passMet.length(); i++){
+
+            int aEntero= passMet.charAt(i);
+
+            if(aEntero>10 && aEntero<20){
+                aEntero+=10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<30){
+                aEntero+= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<40){
+                aEntero-= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<50){
+                aEntero+= 10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<60){
+                aEntero-= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<70){
+                aEntero+= 10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<80){
+                aEntero+= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<90){
+                aEntero-= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<100){
+                aEntero+= 10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero<110){
+                aEntero-= 20;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero%2== 0 && aEntero>=120){
+                aEntero-=10;
+                temp.append((char)aEntero);
+            }
+            else if(aEntero%2!= 0 && aEntero>=123){
+                aEntero-=12;
+                temp.append((char)aEntero);
+            }
+        }
+
+        return temp.toString();
     }
+
 }
+
