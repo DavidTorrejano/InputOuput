@@ -254,7 +254,7 @@ public class EjercicioNueve {
         try{
             FileReader usEn= new FileReader("src/persona.txt");
 
-            int almacen= 0;
+            int almacen;
             StringBuilder user= new StringBuilder();
 
 
@@ -285,7 +285,7 @@ public class EjercicioNueve {
         try{
             FileReader usEn= new FileReader("src/passw.txt");
 
-            int almacen= 0;
+            int almacen;
             StringBuilder user= new StringBuilder();
 
 
