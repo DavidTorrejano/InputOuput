@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.LinkedList;
+
 
 public class EjercicioNueve {
 
@@ -5,12 +8,16 @@ public class EjercicioNueve {
     public static void main(String[] args) {
 
 
-        String pass= codificadorContrasena("Un texto de prueba");
-        System.out.println(pass);
+        crearUsuarioContrasena("Armani", "Lorenaesmiamiga");
 
-        String reverPass= decodificadorContrasena(pass);
-        System.out.println(reverPass);
 
+        LinkedList<String> usuario= new LinkedList<>();
+        lectorUsuarios(usuario);
+
+
+
+        System.out.println(usuario.get(0));
+        System.out.println(usuario.get(3));
 
 
 
@@ -140,6 +147,59 @@ public class EjercicioNueve {
         }
 
         return temp.toString();
+    }
+
+
+    public static void crearUsuarioContrasena(String nUser, String passUser){
+
+        String usuario= nUser + '±';
+        String contra= passUser + '±';
+
+
+        try {
+            FileWriter outUser= new FileWriter("src/persona.txt", true);
+            outUser.write(nUser);
+
+            FileWriter outPass= new FileWriter("src/passw.txt", true);
+            outPass.write(passUser);
+
+            outUser.close();
+            outPass.close();
+        }catch (IOException e){
+            System.out.println("Error malito " + e);
+        }
+
+    }
+
+    public static void lectorUsuarios(LinkedList <String> usuarios){
+
+
+        try{
+            FileReader usEn= new FileReader("src/persona.txt");
+
+            int almacen= 0;
+            StringBuilder user= new StringBuilder();
+
+
+            do {
+                almacen= usEn.read();
+
+                if(almacen==(int)'±'){
+                    usuarios.add(user.toString());
+                    user.delete(0,user.length());
+                    continue;
+                }
+                user.append((char)almacen);
+            }while(almacen!=-1);
+
+            usEn.close();
+
+        }catch (FileNotFoundException e){
+            System.out.println("no encontrado" + e);
+        }catch (IOException e){
+            System.out.println("No sé qué ha pasado, pero no está bien " + e);
+        }
+
     }
 
 }
